@@ -209,6 +209,29 @@ public class Jeu {
 		}
 	}
 	
+	public void comptePoints() {
+		for(int i=0;i<this.listeJoueurs.size();i++) {
+			ArrayList<Carte> main=listeJoueurs.get(i).getMain();
+			int point=0;
+			//listeJoueurs.get(i).setPoint(0);
+			for (int j=0;j< main.size();j++) {
+				if((main.get(j).getNumero()==11)||(main.get(j).getNumero()==12)) {
+					point=point+10;
+				}
+				//verifier si la carte a effet, on lui donne 20 points. En plus, si c'est 8 on rajoute 30 points.
+				else if(main.get(j).getEffet()==1){
+					point=point+20;
+					if(main.get(j).getNumero()==8) {
+						point=point+30;
+					}
+				}
+				else {
+					point=point+main.get(j).getNumero();
+				}
+			}
+			listeJoueurs.get(i).setPoint(point);
+		}
+	}
 	
 	
 	
